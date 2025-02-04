@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cuestionario de Lengua y Literatura</title>
+        <link rel="stylesheet" href="../style/examen.css" />
+    </head>
+    <body>
+        <div class="quiz-container">
+            <h1>Cuestionario de Lengua y Literatura - 8º Grado</h1>
+            <form id="quizForm">
+                <!-- Pregunta 1 -->
+                <div class="question">
+                    <p>1. ¿Qué es un sustantivo?</p>
+                    <label>
+                        <input type="radio" name="q1" value="a" /> a) Una
+                        palabra que expresa acción.
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b" /> b) Una
+                        palabra que nombra personas, lugares o cosas.
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c" /> c) Una
+                        palabra que describe cualidades.
+                    </label>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="question">
+                    <p>2. ¿Quién escribió "Cien años de soledad"?</p>
+                    <label>
+                        <input type="radio" name="q2" value="a" /> a) Pablo
+                        Neruda
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b" /> b) Gabriel
+                        García Márquez
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c" /> c) Jorge Luis
+                        Borges
+                    </label>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="question">
+                    <p>
+                        3. ¿Cuál es el género literario de "Don Quijote de la
+                        Mancha"?
+                    </p>
+                    <label>
+                        <input type="radio" name="q3" value="a" /> a) Lírico
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b" /> b) Dramático
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c" /> c) Narrativo
+                    </label>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="question">
+                    <p>4. ¿Qué es una metáfora?</p>
+                    <label>
+                        <input type="radio" name="q4" value="a" /> a) Una
+                        comparación usando "como" o "tal como".
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b" /> b) Una figura
+                        retórica que describe algo como si fuera otra cosa.
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c" /> c) Una
+                        exageración para enfatizar algo.
+                    </label>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="question">
+                    <p>
+                        5. ¿Cuál es el tiempo verbal en la oración: "Ellos
+                        jugaron fútbol ayer"?
+                    </p>
+                    <label>
+                        <input type="radio" name="q5" value="a" /> a) Presente
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="b" /> b) Pasado
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="c" /> c) Futuro
+                    </label>
+                </div>
+
+                <button type="submit">Enviar Respuestas</button>
+            </form>
+
+            <div id="result" class="result"></div>
+        </div>
+
+        <script>
+            document
+                .getElementById('quizForm')
+                .addEventListener('submit', function (event) {
+                    event.preventDefault(); // Evita que el formulario se envíe
+
+                    // Respuestas correctas
+                    const answers = {
+                        q1: 'b',
+                        q2: 'b',
+                        q3: 'c',
+                        q4: 'b',
+                        q5: 'b',
+                    };
+
+                    let score = 0;
+
+                    // Verificar respuestas
+                    for (let i = 1; i <= 5; i++) {
+                        const question = `q${i}`;
+                        const selectedAnswer = document.querySelector(
+                            `input[name="${question}"]:checked`
+                        );
+
+                        if (
+                            selectedAnswer &&
+                            selectedAnswer.value === answers[question]
+                        ) {
+                            score++;
+                        }
+                    }
+
+                    // Mostrar resultado
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = `Obtuviste ${score} de 5 respuestas correctas.`;
+
+                    if (score === 5) {
+                        resultDiv.innerHTML += ' ¡Excelente trabajo!';
+                    } else if (score >= 3) {
+                        resultDiv.innerHTML += ' ¡Buen trabajo!';
+                    } else {
+                        resultDiv.innerHTML += ' Sigue practicando.';
+                    }
+                });
+        </script>
+    </body>
+</html>
