@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style/style.css" />
+        <title>Home</title>
+    </head>
+    <body>
+        <div class="container">
+            <img src="./assest/img.jfif" class="img" />
+            <div class="login">
+                <h2>Iniciar Sesión</h2>
+                <form id="loginForm" action="./page/home.html">
+                    <div class="input-group">
+                        <label for="username">Usuario</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                        />
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Contraseña</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                        />
+                    </div>
+                    <button type="submit">Ingresar</button>
+                </form>
+                <p id="error-message" class="error-message"></p>
+            </div>
+        </div>
+        <script>
+            document
+                .getElementById('loginForm')
+                .addEventListener('submit', function (event) {
+                    event.preventDefault(); // Evita que el formulario se envíe
+
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    const errorMessage =
+                        document.getElementById('error-message');
+
+                    // Validación de usuario y contraseña
+                    if (username === 'abraham' && password === 'pass1234') {
+                        errorMessage.textContent = ''; // Limpia el mensaje de error
+                        // Redirige al usuario a la página home.html
+                        window.location.href = './page/home.html';
+                    } else {
+                        errorMessage.textContent =
+                            'Usuario o contraseña incorrectos. Inténtalo de nuevo.';
+                    }
+                });
+        </script>
+    </body>
+</html>
